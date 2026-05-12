@@ -1,0 +1,6 @@
+{
+  "name": "Jatre - Namma Pride",
+  "description": "A festive, traditional, and modern mobile app for Namma Jatre.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": []
+}

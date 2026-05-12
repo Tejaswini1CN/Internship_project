@@ -1,0 +1,53 @@
+{
+  "entities": {
+    "event": {
+      "title": "Event",
+      "description": "A scheduled event at the fair.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "number" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "category": { "type": "string" },
+        "location": { "type": "string" },
+        "startTime": { "type": "string" },
+        "endTime": { "type": "string" },
+        "isLive": { "type": "boolean" },
+        "isFavorite": { "type": "boolean" },
+        "updatedAt": { "type": "string", "format": "date-time"}
+      },
+      "required": ["id", "title", "description", "location", "startTime", "endTime"]
+    },
+    "report": {
+      "title": "Report",
+      "description": "A help desk report for lost items, missing persons, or emergencies.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "number" },
+        "reportType": { "type": "string", "enum": ["item", "person", "emergency"] },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "location": { "type": "string" },
+        "dateTime": { "type": "string" },
+        "contactNumber": { "type": "string" },
+        "status": { "type": "string" },
+        "imageUri": { "type": "string" },
+        "age": { "type": "number" },
+        "ownerId": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "reportType", "name", "description", "location", "dateTime", "contactNumber", "status"]
+    }
+  },
+  "firestore": {
+    "/events": {
+      "schema": { "$ref": "#/entities/event" },
+      "description": "List of events happening at the fair."
+    },
+    "/reports": {
+      "schema": { "$ref": "#/entities/report" },
+      "description": "Help desk reports submitted by users."
+    }
+  }
+}
