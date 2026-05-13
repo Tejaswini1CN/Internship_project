@@ -106,6 +106,18 @@ function CustomMapContent() {
     }
   };
 
+  const handleGetDirections = () => {
+    if (!selectedMarker) return;
+    const destination = `${selectedMarker.lat},${selectedMarker.lng}`;
+    let url = `https://www.google.com/maps/dir/?api=1&destination=${destination}`;
+    
+    if (userLocation) {
+      url += `&origin=${userLocation.lat},${userLocation.lng}`;
+    }
+    
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <>
       <div className="absolute top-0 inset-x-0 bg-surface/90 backdrop-blur-xl px-4 py-4 pt-safe border-b border-border flex flex-col z-20 shadow-sm transition-all">
@@ -257,7 +269,7 @@ function CustomMapContent() {
               </p>
               
               <div className="flex gap-3">
-                 <CustomButton className="flex-1">
+                 <CustomButton className="flex-1" onClick={handleGetDirections}>
                    <MapPin size={18} className="mr-2" />
                    Get Directions
                  </CustomButton>
